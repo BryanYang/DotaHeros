@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dota Heros</string>
+    <string name="action_settings">Settings</string>
+    <string name="page_text0">This is the first page!</string>
+    <string name="page_text1">This is the second page!</string>
+    <string name="page_text2">This is the third page!</string>
+    <string name="tip_text">Slide or click tab to change another.</string>
+
+</resources>

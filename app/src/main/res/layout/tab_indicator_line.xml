@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="44dp"
+    android:gravity="center" >
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="23dp"
+        android:background="@color/divider" />
+
+</LinearLayout>
