@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.view.View;
 import android.widget.SimpleAdapter;
 
+import com.example.yangbryan.common.DataManager;
 import com.example.yangbryan.dotaheros.R;
 import com.example.yangbryan.dotaheros.ViewPagerIndicatorView;
 
@@ -30,13 +31,15 @@ import com.example.yangbryan.dotaheros.ViewPagerIndicatorView;
 public class SampleActivity extends Activity {
 	private ViewPagerIndicatorView viewPagerIndicatorView;
 	private ListView listView;
+	private DataManager dm;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sample);
 
-		SQLiteDatabase db = openOrCreateDatabase("heros", Context.MODE_PRIVATE, null);
+		dm = new DataManager(this.getApplicationContext());
+
 		//set ViewPagerIndicatorView
 		this.viewPagerIndicatorView = (ViewPagerIndicatorView) findViewById(R.id.viewpager_indicator_view);
 		final TreeMap<String, View> map = new TreeMap<String, View>();
@@ -52,7 +55,7 @@ public class SampleActivity extends Activity {
 	private List<Map<String, Object>> getData() {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Map<String, Object> map = new HashMap<String, Object>();
-		SQLiteDatabase db = openOrCreateDatabase("yang.db", Context.MODE_PRIVATE, null);
+		SQLiteDatabase db = dm.openDatabase("yang");
 		Cursor c = db.rawQuery("SELECT * FROM heros", new String[]{});
 		while (c.moveToNext()) {
 			int _id = c.getInt(c.getColumnIndex("id"));
