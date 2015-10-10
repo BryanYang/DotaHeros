@@ -15,6 +15,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:baselineAligned="false">
             <TableRow android:layout_width="wrap_content">
+
                 <ImageView
                     android:layout_width="235px"
                     android:layout_height="272px"
@@ -26,14 +27,14 @@
                     android:orientation="vertical"
                     android:weightSum="1">
                     <TextView
-                        android:id="@+id/name"
+                        android:id="@+id/name_cn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
                         android:textColor="#FFFFFFFF"
                         android:textSize="52px" />
                     <TextView
-                        android:id="@+id/dingwei"
+                        android:id="@+id/position"
                         android:layout_width="268dp"
                         android:layout_height="62dp"
                         android:textColor="#FFFFFFFF"
