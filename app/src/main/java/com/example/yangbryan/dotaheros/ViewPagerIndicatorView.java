@@ -5,14 +5,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.yangbryan.dotaheros.TabIndicatorView.OnIndicateChangeListener;
 
@@ -22,17 +27,20 @@ import com.example.yangbryan.dotaheros.TabIndicatorView.OnIndicateChangeListener
  * @author savant-pan
  * 
  */
-public class ViewPagerIndicatorView extends LinearLayout implements OnIndicateChangeListener, OnPageChangeListener {
+public class ViewPagerIndicatorView extends LinearLayout implements OnIndicateChangeListener, OnPageChangeListener,ListView.OnItemClickListener {
 	private TabIndicatorView tabIndicatorView;
 	private ViewPager viewPager;
+	private Context context;
 
 	public ViewPagerIndicatorView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.initView();
+		this.context = context;
 	}
 
 	public ViewPagerIndicatorView(Context context) {
 		super(context);
+		this.context = context;
 		this.initView();
 	}
 
@@ -40,6 +48,12 @@ public class ViewPagerIndicatorView extends LinearLayout implements OnIndicateCh
 		this.setOrientation(LinearLayout.VERTICAL);
 
 		this.tabIndicatorView = new TabIndicatorView(getContext());
+        tabIndicatorView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"1111111",Toast.LENGTH_SHORT);
+            }
+        });
 		this.viewPager = new ViewPager(getContext());
 
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -58,23 +72,25 @@ public class ViewPagerIndicatorView extends LinearLayout implements OnIndicateCh
 	 * @param titleViewMap
 	 *            标题及对应View map数据
 	 */
-	public void setupLayout(Map<String, View> titleViewMap) {
+	public void setupLayout(Map<String,Object[]> titleViewMap) {
 		if (titleViewMap == null || titleViewMap.size() == 0) {
 			throw new NullPointerException();
 		}
 
 		final List<String> textList = new ArrayList<String>();
+		final List<Drawable> iconList = new ArrayList<Drawable>();
 		final List<View> viewList = new ArrayList<View>();
 
-		final Iterator<Entry<String, View>> iterator = titleViewMap.entrySet().iterator();
+		final Iterator<Entry<String,Object[]>> iterator = titleViewMap.entrySet().iterator();
 		while (iterator.hasNext()) {// 生成数据列表
-			final Entry<String, View> item = iterator.next();
+			final Entry<String,Object[]> item = iterator.next();
 			textList.add(item.getKey());
-			viewList.add(item.getValue());
+			iconList.add(getResources().getDrawable((Integer) item.getValue()[0]));
+			viewList.add((ListView)item.getValue()[1]);
 		}
 
 		// 初始化TextTabIndicateView及ViewPager
-		this.tabIndicatorView.setupLayout(textList);
+		this.tabIndicatorView.setupLayout(textList, iconList);
 		this.viewPager.setAdapter(new MyPagerAdapter(viewList));
 	}
 
@@ -86,6 +102,11 @@ public class ViewPagerIndicatorView extends LinearLayout implements OnIndicateCh
 	@Override
 	public void onPageSelected(int position) {
 		this.tabIndicatorView.setCurrentTab(position, false);//设置不通知接口返回位置
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
+		Toast.makeText(this.context, "点击", Toast.LENGTH_LONG).show();
 	}
 
 	private class MyPagerAdapter extends PagerAdapter {

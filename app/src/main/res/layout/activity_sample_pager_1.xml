@@ -7,46 +7,125 @@
     android:scrollbars="vertical"
     android:fadingEdge="vertical">
 
-
-        <TableLayout
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:background="@color/black"
-            android:layout_height="wrap_content"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:baselineAligned="false">
-            <TableRow android:layout_width="wrap_content">
 
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:background="@color/background_material_dark"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
                 <ImageView
                     android:layout_width="235px"
                     android:layout_height="272px"
                     android:id="@+id/img"
                     android:layout_margin="0px"/>
-
-
-                <LinearLayout android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1">
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:stretchColumns="1，3"
+                    android:orientation="horizontal"
+                    >
                     <TextView
                         android:id="@+id/name_cn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
+                        android:layout_width="fill_parent"
+                        android:layout_height="20dp"
+                        android:text="名称"
                         android:textColor="#FFFFFFFF"
-                        android:textSize="52px" />
-                    <TextView
-                        android:id="@+id/position"
-                        android:layout_width="268dp"
-                        android:layout_height="62dp"
-                        android:textColor="#FFFFFFFF"
+                        android:textSize="52px"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center_horizontal" />
+                    <TableRow android:paddingLeft="10px">
 
-                        android:textSize="33px"
-                        android:layout_weight="0.87" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="攻击类型  "
+                            android:id="@+id/textView"
+                            android:layout_column="0"
+                            android:textSize="33px" />
 
-            </TableRow>
+                        <TextView
+                            android:id="@+id/attack"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FFFFFFFF"
+                            android:text="dsfdsfdsf"
+                            android:textSize="33px"
+                            android:layout_column="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  定位  "
+                            android:id="@+id/textView2"
+                            android:layout_column="2"
+                            android:textSize="33px" />
+
+                        <TextView
+                            android:id="@+id/position"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FFFFFFFF"
+                            android:text="dsfdsfdsf"
+                            android:textSize="33px"
+                            android:layout_column="3" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingLeft="10px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="所属阵营"
+                            android:id="@+id/textView3"
+                            android:layout_column="0"
+                            android:textSize="33px" />
+
+                        <TextView
+                            android:id="@+id/camp"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FFFFFFFF"
+                            android:text="dsfdsfdsf"
+                            android:textSize="33px"
+                            android:layout_column="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  别称  "
+                            android:id="@+id/textView4"
+                            android:layout_column="2"
+                            android:textSize="33px" />
+
+                        <TextView
+                            android:id="@+id/name2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FFFFFFFF"
+                            android:text="dsfdsfdsf"
+                            android:textSize="33px"
+                            android:layout_column="3" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:background="@android:color/holo_green_dark"
+                android:layout_height="2px">
+
+            </LinearLayout>
+        </LinearLayout>
 
 
-        </TableLayout>
 
 
 
