@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+    android:alpha="1">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/skill_img"
+            android:src="@drawable/medusa_mana_shield_hp1"
+            android:layout_height="wrap_content" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:stretchColumns="0,1,2,3"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/skill_name"
+                android:text="风暴之锤"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/skill_info"
+                android:text="风暴之锤"
+                android:textSize="15dp" />
+            <TableRow>
+                <TextView
+                    android:text="魔法消耗"
+                    />
+                <TextView
+                    android:id="@+id/skill_cost"
+                    android:text="20"
+                    />
+                <TextView
+                    android:text="冷却时间"
+                    />
+                <TextView
+                    android:id="@+id/skill_cooldown"
+                    android:text="15s"
+                    />
+
+            </TableRow>
+            <TableRow>
+                <TextView android:text="技能"/>
+            </TableRow>
+
+        </TableLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+

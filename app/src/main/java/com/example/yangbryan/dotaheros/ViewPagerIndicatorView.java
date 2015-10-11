@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -48,17 +49,11 @@ public class ViewPagerIndicatorView extends LinearLayout implements OnIndicateCh
 		this.setOrientation(LinearLayout.VERTICAL);
 
 		this.tabIndicatorView = new TabIndicatorView(getContext());
-        tabIndicatorView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"1111111",Toast.LENGTH_SHORT);
-            }
-        });
 		this.viewPager = new ViewPager(getContext());
 
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 		this.addView(tabIndicatorView, params);
-		params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 		this.addView(viewPager, params);
 
 		this.tabIndicatorView.setOnIndicateChangeListener(this);

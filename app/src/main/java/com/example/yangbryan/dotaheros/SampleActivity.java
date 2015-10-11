@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
@@ -42,11 +44,7 @@ public class SampleActivity extends Activity {
 
 		for( int i=0;i <3;i++ ){
 			ListView l = new ListView(this);
-			l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-				public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-					Toast.makeText(getApplicationContext(),"点击",Toast.LENGTH_SHORT).show();
-				}
-			});
+			l.setOnItemClickListener(onItemClickListener);
 			SimpleAdapter sm =  new SimpleAdapter(this,getData(types[i]), R.layout.activity_sample_pager_1,
 					new String[]{"img","name_cn","attack","position","camp","name2"},
 					new int[]{R.id.img,R.id.name_cn,R.id.attack,R.id.position,R.id.camp,R.id.name2});
@@ -94,8 +92,18 @@ public class SampleActivity extends Activity {
 	}
 
 	public AdapterView.OnItemClickListener onItemClickListener =  new AdapterView.OnItemClickListener() {
-		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-			Toast.makeText(getApplicationContext(),"点击",Toast.LENGTH_SHORT).show();
+		public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3){
+			ListView v = (ListView)arg0;
+			Map<String, Object> s = (Map<String, Object>)v.getAdapter().getItem(pos);
+			Integer imgId = (Integer)s.get("img");
+			Resources res = getApplicationContext().getResources();
+			String name_en = res.getResourceEntryName(imgId);
+			//Toast.makeText(getApplicationContext(), name_en, Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(SampleActivity.this, HeroDetailActivity.class);
+			Bundle bundle = new Bundle();
+			bundle.putString("name_en", name_en);
+			intent.putExtras(bundle);
+			startActivity(intent);
 		}
 	};
 
