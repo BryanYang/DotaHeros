@@ -81,7 +81,6 @@ public class SampleActivity extends Activity {
 			list.add(map);
 		}
 		c.close();
-
 		return list;
 	}
 

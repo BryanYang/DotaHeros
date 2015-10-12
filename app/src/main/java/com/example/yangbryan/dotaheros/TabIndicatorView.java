@@ -83,7 +83,7 @@ public class TabIndicatorView extends LinearLayout implements View.OnTouchListen
 	/**
 	 * 设置文字标签数据
 	 * 
-	 * @param titleList
+	 * @param textList
 	 *            文字标签列表
 	 */
 	public void setupLayout(List<String> textList) {
@@ -212,7 +212,7 @@ public class TabIndicatorView extends LinearLayout implements View.OnTouchListen
 	 * 更新选中项，重写则自定义
 	 * 
 	 * @param view
-	 * @param isLast
+	 * @param isCurrent
 	 */
 	private void refreshItemView(View view, boolean isCurrent) {
 		final View line = view.findViewById(R.id.bottom_line);
