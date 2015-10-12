@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Vector;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -14,6 +16,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -72,12 +75,12 @@ public class TabIndicatorView extends LinearLayout implements View.OnTouchListen
 	 * @param titleArray
 	 *            文字标签数组
 	 */
-	public void setupLayout(String titleArray[]) {
+	public void setupLayout(String titleArray[],Drawable iconArray[]) {
 		if (titleArray == null || titleArray.length == 0) {
 			throw new NullPointerException();
 		}
 
-		this.setupLayout(Arrays.asList(titleArray));
+		this.setupLayout(Arrays.asList(titleArray),Arrays.asList(iconArray));
 	}
 
 	/**
@@ -86,18 +89,19 @@ public class TabIndicatorView extends LinearLayout implements View.OnTouchListen
 	 * @param textList
 	 *            文字标签列表
 	 */
-	public void setupLayout(List<String> textList) {
+	public void setupLayout(List<String> textList,List<Drawable> iconList) {
 		if (textList == null || textList.size() == 0) {
 			throw new NullPointerException();
 		}
-
 		final int len = textList.size();
 
 		final List<View> list = new ArrayList<View>();
 		for (int index = 0; index < len; index++) {
 			final View view = LayoutInflater.from(getContext()).inflate(R.layout.tab_indicator_item, null);
 			final TextView textView = (TextView) view.findViewById(R.id.indicator_text);
+			final ImageView imageView = (ImageView) view.findViewById(R.id.indicator_img);
 			textView.setText(textList.get(index));
+			imageView.setImageDrawable(iconList.get(index));
 			list.add(view);
 		}
 

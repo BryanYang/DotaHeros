@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+    android:alpha="1">
+        <LinearLayout
+            android:layout_width="260px"
+            android:orientation="vertical"
+            android:layout_height="360px">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:id="@+id/skill_img"
+                android:src="@drawable/abaddon_aphotic_shield_hp1"
+                android:scaleType="centerCrop"
+                android:layout_height="wrap_content" />
+                <TableRow
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+
+                    >
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="魔法消耗"
+                        />
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:id="@+id/skill_cost"
+                        android:gravity="center_horizontal"
+                        android:text="20" />
+                </TableRow>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                >
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="冷却时间"
+                    />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:id="@+id/skill_cooldown"
+                    android:gravity="center_horizontal"
+                    android:text="15s"
+                    />
+            </TableRow>
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:stretchColumns="0,1,2,3"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/skill_name"
+                android:text="风暴之锤"
+                android:textSize="50px"
+                android:layout_marginBottom="10px" />
+            <TextView
+                android:id="@+id/skill_info"
+                android:text="风暴之锤"
+                android:textSize="33px" />
+            <TableRow>
+                <TextView android:text="技能"/>
+            </TableRow>
+        </TableLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+

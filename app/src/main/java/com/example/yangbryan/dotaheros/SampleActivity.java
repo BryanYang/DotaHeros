@@ -7,14 +7,18 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.example.yangbryan.common.DataManager;
 
@@ -22,14 +26,13 @@ import com.example.yangbryan.common.DataManager;
 /**
  * 使用示例
  * 
- * @author savant-pan
+ * @author Bryan Yang
  * 
  */
 public class SampleActivity extends Activity {
 	private ViewPagerIndicatorView viewPagerIndicatorView;
-	private ListView listView1;
-	private ListView listView2;
-	private ListView listView3;
+	private ArrayList<ListView> views = new ArrayList<ListView>();
+	private String[] types = new String[]{"力量","敏捷","智力"};
 	private DataManager dm;
 
 	@Override
@@ -39,27 +42,24 @@ public class SampleActivity extends Activity {
 
 		dm = new DataManager(this.getApplicationContext());
 
+		for( int i=0;i <3;i++ ){
+			ListView l = new ListView(this);
+			l.setOnItemClickListener(onItemClickListener);
+			SimpleAdapter sm =  new SimpleAdapter(this,getData(types[i]), R.layout.activity_sample_pager_1,
+					new String[]{"img","name_cn","attack","position","camp","name2"},
+					new int[]{R.id.img,R.id.name_cn,R.id.attack,R.id.position,R.id.camp,R.id.name2});
+			l.setAdapter(sm);
+			views.add(l);
+		}
 		//set ViewPagerIndicatorView
 		this.viewPagerIndicatorView = (ViewPagerIndicatorView) findViewById(R.id.viewpager_indicator_view);
-		final TreeMap<String, View> map = new TreeMap<String, View>();
-		listView1 = new ListView(this);
-		SimpleAdapter sm1 =  new SimpleAdapter(this,getData("力量"), R.layout.activity_sample_pager_1,new String[]{"img","name_cn","position"},new int[]{R.id.img,R.id.name_cn,R.id.position});
-		listView1.setAdapter(sm1);
-		listView2 = new ListView(this);
-		SimpleAdapter sm2 =  new SimpleAdapter(this,getData("敏捷"), R.layout.activity_sample_pager_1,new String[]{"img","name_cn","position"},new int[]{R.id.img,R.id.name_cn,R.id.position});
-		listView2.setAdapter(sm2);
-		listView3 = new ListView(this);
-		listView1.setDivider(new ColorDrawable(getResources().getColor(android.R.color.holo_green_dark)));
-		listView1.setDividerHeight(2);
-		listView2.setDivider(new ColorDrawable(getResources().getColor(android.R.color.holo_green_dark)));
-		listView2.setDividerHeight(2);
-		listView3.setDivider(new ColorDrawable(getResources().getColor(android.R.color.holo_green_dark)));
-		listView3.setDividerHeight(2);
-		SimpleAdapter sm3 =  new SimpleAdapter(this,getData("智力"), R.layout.activity_sample_pager_1,new String[]{"img","name_cn","position"},new int[]{R.id.img,R.id.name_cn,R.id.position});
-		listView3.setAdapter(sm3);
-		map.put("力量", listView1);
-		map.put("敏捷", listView2);
-		map.put("智力", listView3);
+		final TreeMap<String, Object[]> map = new TreeMap<String, Object[]>();
+
+		map.put("力量",new Object[]{R.drawable.overviewicon_str,views.get(0)});
+		map.put("敏捷",new Object[]{R.drawable.overviewicon_agi,views.get(1)});
+		map.put("智力",new Object[]{R.drawable.overviewicon_int,views.get(2)});
+
+
 		this.viewPagerIndicatorView.setupLayout(map);
 	}
 
@@ -72,16 +72,38 @@ public class SampleActivity extends Activity {
 			String name_cn = c.getString(c.getColumnIndex("name_cn"));
 			String position = c.getString(c.getColumnIndex("position"));
 			String img = c.getString(c.getColumnIndex("name_en"));
+			String attack = c.getString(c.getColumnIndex("attack"));
+			String camp = c.getString(c.getColumnIndex("camp"));
+			String name2 = c.getString(c.getColumnIndex("name2"));
 			int imgId = getResources().getIdentifier(img, "drawable", getPackageName());
 
 			map = new HashMap<String, Object>();
 			map.put("img", imgId);
 			map.put("name_cn", name_cn);
+			map.put("attack",attack);
 			map.put("position", position);
+			map.put("camp",camp);
+			map.put("name2",name2);
 			list.add(map);
 		}
 		c.close();
 		return list;
 	}
+
+	public AdapterView.OnItemClickListener onItemClickListener =  new AdapterView.OnItemClickListener() {
+		public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3){
+			ListView v = (ListView)arg0;
+			Map<String, Object> s = (Map<String, Object>)v.getAdapter().getItem(pos);
+			Integer imgId = (Integer)s.get("img");
+			Resources res = getApplicationContext().getResources();
+			String name_en = res.getResourceEntryName(imgId);
+			//Toast.makeText(getApplicationContext(), name_en, Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(SampleActivity.this, HeroDetailActivity.class);
+			Bundle bundle = new Bundle();
+			bundle.putString("name_en", name_en);
+			intent.putExtras(bundle);
+			startActivity(intent);
+		}
+	};
 
 }
