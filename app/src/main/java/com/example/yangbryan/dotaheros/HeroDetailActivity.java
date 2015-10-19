@@ -52,7 +52,6 @@ public class HeroDetailActivity extends Activity implements ViewPagerIndicatorVi
     private LayoutInflater inflater;
     private Map<String, Object> hero_map;
     private List<Map<String, Object>> skills;
-    private WebView wv;
 
     private ViewPagerIndicatorView viewPagerIndicatorView;
     private String[] tabs = new String[]{"来历", "技能", "出装", "相关"};
@@ -65,7 +64,6 @@ public class HeroDetailActivity extends Activity implements ViewPagerIndicatorVi
         intent = getIntent();
         bundle = intent.getExtras();
         name_en = bundle.getString("name_en");
-        wv = new WebView(this);
         inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         this.viewPagerIndicatorView = (ViewPagerIndicatorView) findViewById(R.id.viewpager_indicator_view_1);
@@ -270,8 +268,11 @@ public class HeroDetailActivity extends Activity implements ViewPagerIndicatorVi
     private GridView.OnItemClickListener onItemClick = new GridView.OnItemClickListener(){
         @Override
         public  void onItemClick(AdapterView<?> arg0, View arg1, int idx, long arg3) {
-            wv.getSettings().setJavaScriptEnabled(true);
-            wv.loadUrl("file:///android_asset/equips.html");
+            Intent intent = new Intent(HeroDetailActivity.this, Equip.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("name_en", "a");
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
     };
 
