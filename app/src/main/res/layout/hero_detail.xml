@@ -1,96 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
 
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/repeat_bg_1"
+        android:orientation="vertical"
+
+        android:paddingTop="10sp">
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10px">
+            android:layout_marginBottom="10px"
+            android:orientation="horizontal">
             <ImageView
-                android:layout_width="512px"
-                android:src="@drawable/abaddon_full"
-                android:scaleType="fitStart"
                 android:id="@+id/hero_img"
+                android:layout_width="512px"
                 android:layout_height="288px"
-                android:layout_marginRight="10px" />
+                android:layout_marginRight="10px"
+                android:scaleType="fitStart"
+                android:src="@drawable/abaddon_full" />
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:stretchColumns="1,3,5"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:stretchColumns="1,3,5">
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:text="斯文"
                     android:id="@+id/hero_name_cn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="斯文"
                     android:textSize="20dp" />
-                <TableRow android:layout_width="fill_parent"
+
+                <TableRow
+                    android:layout_width="fill_parent"
                     android:layout_height="match_parent">
-                    <TextView android:text="攻击:"/>
+
+                    <TextView android:text="攻击:" />
+
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:text="近战"
                         android:id="@+id/hero_attack"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp" />
-                    <TextView android:text="阵营:"/>
-                    <TextView
                         android:layout_width="wrap_content"
-                        android:text="天辉"
+                        android:layout_height="wrap_content"
+                        android:text="近战" />
+
+                    <TextView android:text="阵营:" />
+
+                    <TextView
                         android:id="@+id/hero_camp"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp" />
-                    <TextView android:text="类型:"/>
-                    <TextView
                         android:layout_width="wrap_content"
-                        android:text="智力"
+                        android:layout_height="wrap_content"
+                        android:text="天辉" />
+
+                    <TextView android:text="类型:" />
+
+                    <TextView
                         android:id="@+id/hero_type"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp" />
-                </TableRow>
-                <TableRow>
-                    <TextView android:text="定位"/>
-                    <TextView
                         android:layout_width="wrap_content"
-                        android:text="核心"
-                        android:id="@+id/hero_position"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp" />
+                        android:text="智力" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView android:text="定位" />
+
+                    <TextView
+                        android:id="@+id/hero_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="核心" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:text="英雄故事"
-        android:textSize="50px"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5px"
-        android:layout_marginTop="5px" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="是一名守夜骑士的私生子，身怀苍白南海人的血统，在影承废墟长大。他父亲因为违背了守夜人法典而被处决，母亲又因为她的种族而被驱逐，这一切让斯温坚信所谓的社会法则中毫无荣誉可言——荣誉只存在于他心中。在照顾母亲走过弥留之际以后，他以新人的身份参加了守夜骑士团，并对自己的身份绝对保密。十三年来，他一直在他父亲当年的学校里学习，掌握那些仇视他出身的人所撰写的法则。接着，在他本该立誓成为守夜骑士的那天，他手持弃誓之刃，击碎神圣之盔，用守夜圣火烧毁了那所谓的法则。他大步流星的从守夜堡离开，注定了永世孤独，并向圣符起誓，只遵循他自己心中的法则。是的，他仍然是一名骑士，不过是只效忠于自己心中正义的...流浪剑客。"
-        android:id="@+id/hero_story"
-        android:layout_height="wrap_content"
-        android:textSize="12dp"
-        android:autoText="false" />
+        <include layout="@layout/divider_1" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:text="英雄技能"
-        android:textSize="50px"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5px"
-        android:layout_marginBottom="5px" />
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <com.example.yangbryan.dotaheros.ViewPagerIndicatorView
+                android:id="@+id/viewpager_indicator_view_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
 
-
-</LinearLayout>
 
 
 

@@ -44,6 +44,7 @@ public class SampleActivity extends Activity {
 
 		for( int i=0;i <3;i++ ){
 			ListView l = new ListView(this);
+
 			l.setOnItemClickListener(onItemClickListener);
 			SimpleAdapter sm =  new SimpleAdapter(this,getData(types[i]), R.layout.activity_sample_pager_1,
 					new String[]{"img","name_cn","attack","position","camp","name2"},
@@ -61,6 +62,12 @@ public class SampleActivity extends Activity {
 
 
 		this.viewPagerIndicatorView.setupLayout(map);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.viewPagerIndicatorView.tabIndicatorView.recyleStyle();
 	}
 
 	private List<Map<String, Object>> getData(String type) {
@@ -93,6 +100,7 @@ public class SampleActivity extends Activity {
 	public AdapterView.OnItemClickListener onItemClickListener =  new AdapterView.OnItemClickListener() {
 		public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3){
 			ListView v = (ListView)arg0;
+			v.setBackgroundColor(getResources().getColor(R.color.black));
 			Map<String, Object> s = (Map<String, Object>)v.getAdapter().getItem(pos);
 			Integer imgId = (Integer)s.get("img");
 			Resources res = getApplicationContext().getResources();

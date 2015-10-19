@@ -2,31 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="44dp"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp">
-        <ImageView
-            android:id="@+id/indicator_img"
-            android:layout_width="20dp"
-            android:background="@drawable/overviewicon_agi"
-            android:layout_marginLeft="30dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_height="20dp"/>
-        <TextView
-            android:id="@+id/indicator_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="30dp"
-            android:text="TextView"
-            android:textColor="@color/frame"
-            android:textSize="16sp"/>
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:stretchColumns="0,1">
+        <TableRow>
+            <LinearLayout android:gravity="right">
+                <ImageView
+                    android:id="@+id/indicator_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:paddingRight="5sp"
+                    android:background="@drawable/overviewicon_agi"
+                    android:scaleType="fitStart" />
+            </LinearLayout>
+            <LinearLayout android:gravity="left">
+                <TextView
+                    android:id="@+id/indicator_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:paddingLeft="5sp"
+                    android:textColor="@color/frame"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-    </RelativeLayout>
+        </TableRow>
+
+    </TableLayout>
 
     <!-- 线条 -->
 
@@ -34,8 +42,8 @@
         android:id="@+id/bottom_line"
         android:layout_width="fill_parent"
         android:layout_height="4dp"
-        android:orientation="horizontal"
         android:background="@color/frame"
+        android:orientation="horizontal"
         android:visibility="invisible" />
 
 </LinearLayout>
