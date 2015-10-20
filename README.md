@@ -13,9 +13,9 @@
 
 # 程序截图
 
-![](https://github.com/BryanYang/DotaHeros/blob/master/01.png) 
-![](https://github.com/BryanYang/DotaHeros/blob/master/02.png) 
-![](https://github.com/BryanYang/DotaHeros/blob/master/03.png) 
-![](https://github.com/BryanYang/DotaHeros/blob/master/04.png) 
-![](https://github.com/BryanYang/DotaHeros/blob/master/05.png) 
+![](https://github.com/BryanYang/DotaHeros/blob/master/01.jpg) 
+![](https://github.com/BryanYang/DotaHeros/blob/master/02.jpg) 
+![](https://github.com/BryanYang/DotaHeros/blob/master/03.jpg) 
+![](https://github.com/BryanYang/DotaHeros/blob/master/04.jpg) 
+![](https://github.com/BryanYang/DotaHeros/blob/master/05.jpg) 
 
