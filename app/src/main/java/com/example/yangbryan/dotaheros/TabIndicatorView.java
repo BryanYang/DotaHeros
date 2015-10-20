@@ -28,6 +28,7 @@ import android.widget.TextView;
  */
 public class TabIndicatorView extends LinearLayout implements View.OnTouchListener {
 	private LinearLayout tabHost;
+	private LinearLayout tabRoot;
 	private List<View> viewList = new Vector<View>();
 
 	/**
@@ -58,8 +59,17 @@ public class TabIndicatorView extends LinearLayout implements View.OnTouchListen
 
 	private void init() {
 		LayoutInflater.from(getContext()).inflate(R.layout.tab_indicator_layout, this);
+		this.tabRoot = (LinearLayout) findViewById(R.id.tab_root);
 		this.tabHost = (LinearLayout) findViewById(R.id.tab_host);
 		this.refreshHandler = new TabIndicateHandler(TabIndicatorView.this);
+	}
+
+	public void changeStyle(){
+		this.tabRoot.getBackground().setAlpha(0);
+		//this.tabHost.
+	}
+	public void recyleStyle(){
+		this.tabRoot.getBackground().setAlpha(255);
 	}
 
 	public void setOnIndicateChangeListener(OnIndicateChangeListener onIndicateChangeListener) {
@@ -227,6 +237,7 @@ public class TabIndicatorView extends LinearLayout implements View.OnTouchListen
 			line.setVisibility(View.VISIBLE);
 		} else {
 			textView.setTextColor(resources.getColor(R.color.title));
+
 			line.setVisibility(View.INVISIBLE);
 		}
 	}

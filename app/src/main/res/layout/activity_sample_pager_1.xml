@@ -2,12 +2,11 @@
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
-
+    android:background="@drawable/item_selector"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:background="@color/background_material_dark"
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
                 android:orientation="horizontal">
@@ -25,10 +24,10 @@
                     <TextView
                         android:id="@+id/name_cn"
                         android:layout_width="fill_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="wrap_content"
                         android:text="名称"
                         android:textColor="#FFFFFFFF"
-                        android:textSize="52px"
+                        android:textSize="20sp"
                         android:layout_marginBottom="10dp"
                         android:layout_gravity="center_horizontal" />
                     <TableRow android:paddingLeft="10px">
@@ -39,7 +38,8 @@
                             android:text="攻击类型  "
                             android:id="@+id/textView"
                             android:layout_column="0"
-                            android:textSize="33px" />
+                            android:textSize="13sp"
+                            android:textColor="@android:color/darker_gray" />
 
                         <TextView
                             android:id="@+id/attack"
@@ -47,16 +47,17 @@
                             android:layout_height="wrap_content"
                             android:textColor="#FFFFFFFF"
                             android:text="dsfdsfdsf"
-                            android:textSize="33px"
+                            android:textSize="13sp"
                             android:layout_column="1" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="  定位  "
+                            android:textColor="@android:color/darker_gray"
                             android:id="@+id/textView2"
                             android:layout_column="2"
-                            android:textSize="33px" />
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/position"
@@ -64,7 +65,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#FFFFFFFF"
                             android:text="dsfdsfdsf"
-                            android:textSize="33px"
+                            android:textSize="13sp"
                             android:layout_column="3" />
 
                     </TableRow>
@@ -76,46 +77,38 @@
                             android:layout_height="wrap_content"
                             android:text="所属阵营"
                             android:id="@+id/textView3"
-                            android:layout_column="0"
-                            android:textSize="33px" />
-
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="13sp" />
                         <TextView
                             android:id="@+id/camp"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#FFFFFFFF"
                             android:text="dsfdsfdsf"
-                            android:textSize="33px"
-                            android:layout_column="1" />
-
+                            android:textSize="13sp"
+                      />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="  别称  "
                             android:id="@+id/textView4"
-                            android:layout_column="2"
-                            android:textSize="33px" />
-
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="13sp" />
                         <TextView
                             android:id="@+id/name2"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#FFFFFFFF"
                             android:text="dsfdsfdsf"
-                            android:textSize="33px"
-                            android:layout_column="3" />
+                            android:textSize="13sp"
+                          />
 
                     </TableRow>
 
                 </TableLayout>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:background="@android:color/holo_green_dark"
-                android:layout_height="2px">
-
-            </LinearLayout>
+            <include layout="@layout/divider_2"/>
         </LinearLayout>
 
 
